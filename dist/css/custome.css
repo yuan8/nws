@@ -1,0 +1,12 @@
+.small-box{
+    border-radius: 0px!important;
+}
+
+.bg-def{
+  background: linear-gradient(120deg, rgba(0,0,36,1) 1%, rgba(9,72,121,1) 33%, rgba(20,151,218,1) 86%, rgba(10,228,236,0.6842087176667542) 98%);
+
+}
+
+.row{
+  /* max-width: 100vw; */
+}
