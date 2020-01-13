@@ -32,7 +32,7 @@ var <?php echo e($id_chart); ?>_chart = new Highcharts.Chart({
                     index=0;
                   }
                   if(<?php echo e($id_chart); ?>_data.options[index].link_next!=''){
-                    getDataChart('<?php echo e($id_chart); ?>-chart-container-table',<?php echo e($id_chart); ?>_data.options[index].link_next,<?php echo e($id_chart); ?>_data.options[index].where_add,'Program Kegiatan '+<?php echo e($id_chart); ?>_data.options[index].key_name,<?php echo e($id_chart); ?>_data.options[index].map);
+                    getDataChart('<?php echo e($id_chart); ?>-chart-container-table',<?php echo e($id_chart); ?>_data.options[index].link_next,<?php echo e($id_chart); ?>_data.options[index].where_add,'('+ <?php echo e($id_chart); ?>_data.options[index].key_name +')',<?php echo e($id_chart); ?>_data.options[index].map);
                   }
                   
                 }
@@ -51,7 +51,7 @@ var <?php echo e($id_chart); ?>_chart = new Highcharts.Chart({
    yAxis: {
             min: 0,
             title: {
-                text: 'Jumlah Program Kegiatan',
+                text:'<?php echo e(isset($yaxis)?$yaxis:'Jumlah Program Kegiatan'); ?>',
                 
             }
         },
@@ -110,7 +110,7 @@ var <?php echo e($id_chart); ?>_chart = new Highcharts.Chart({
               click:function(e){
                   var index=this.index;
                    if(<?php echo e($id_chart); ?>_data.options[index].link_next!=''){
-                    getDataChart('<?php echo e($id_chart); ?>-chart-container-table',<?php echo e($id_chart); ?>_data.options[index].link_next,<?php echo e($id_chart); ?>_data.options[index].where_add,'Program Kegiatan '+<?php echo e($id_chart); ?>_data.options[index].key_name,<?php echo e($id_chart); ?>_data.options[index].map);
+                    getDataChart('<?php echo e($id_chart); ?>-chart-container-table',<?php echo e($id_chart); ?>_data.options[index].link_next,<?php echo e($id_chart); ?>_data.options[index].where_add,'('+<?php echo e($id_chart); ?>_data.options[index].key_name+')',<?php echo e($id_chart); ?>_data.options[index].map);
                   }
                   console.log(e);
                 }

@@ -16,10 +16,10 @@
             <a class="nav-link bg-default " id="menu_menurut_urusan" data-toggle="pill" href="#menu_menurut_urusan_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">SPM</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link bg-default " id="menu_menurut_urusan" data-toggle="pill" href="#menu_menurut_urusan_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">PN</a>
+            <a class="nav-link bg-default " id="menu_menurut_urusan_pn" data-toggle="pill" href="#menu_menurut_pn_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">PN</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link bg-default " id="menu_menurut_urusan" data-toggle="pill" href="#menu_menurut_urusan_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">SDGS</a>
+            <a class="nav-link bg-default " id="menu_menurut_urusan_sdgs" data-toggle="pill" href="#menu_menurut_sdgs_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">SDGS</a>
           </li>
         
         </ul>
@@ -37,6 +37,14 @@
                <div class="col-md-12" id="chart-container-per-urusan">
               </div>
             </div>
+             <div class="tab-pane fade" id="menu_menurut_pn_content" role="tabpanel" aria-labelledby="menu_menurut_urusan">
+               <div class="col-md-12" id="chart-container-per-urusan_pn">
+              </div>
+            </div>
+             <div class="tab-pane fade" id="menu_menurut_sdgs_content" role="tabpanel" aria-labelledby="menu_menurut_urusan">
+               <div class="col-md-12" id="chart-container-per-urusan_sdgs">
+              </div>
+            </div>
 
           </div>
         </div>
@@ -50,12 +58,12 @@
 <?php $__env->startSection('script'); ?>
 <script type="text/javascript">
 
-  $.post('<?php echo e(rt("keuangan/program_kegiatan_get_data_chart/per_provinsi")); ?>',{id_dom:'chart-container-per-daerah','where':[],map:['per_provinsi','per_kota','per_urusan','per_sub_urusan','per_program']},function(res){
+  $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_nspk")); ?>',{id_dom:'chart-container-per-daerah','where':[],map:['per_nspk','per_kota','per_urusan','per_sub_urusan','per_program']},function(res){
     $('#chart-container-per-daerah').html(res);
   });
 
-   $.post('<?php echo e(rt("keuangan/program_kegiatan_get_data_chart/per_urusan")); ?>',{id_dom:'chart-container-per-urusan','where':[],map:['per_urusan','per_sub_urusan','per_program']},function(res){
-    $('#chart-container-per-urusan').html(res);
+   $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_pn")); ?>',{id_dom:'chart-container-per-urusan','where':[],map:['per_pn','per_urusan','per_sub_urusan','per_program']},function(res){
+    $('#chart-container-per-urusan_pn').html(res);
   });
 
 </script>
@@ -64,7 +72,7 @@
 <script type="text/javascript">
   
   function getDataChart(dom,link_next,where,title,map=[]){
-    $.post('<?php echo e(rt("keuangan/program_kegiatan_get_data_chart/")); ?>'+link_next,{where:where
+    $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/")); ?>'+link_next,{where:where
       ,id_dom:dom,title:title,map:map},function(res){
         $('#'+dom).html(res);
          $('html, body').animate(

@@ -32,7 +32,7 @@ var {{$id_chart}}_chart = new Highcharts.Chart({
                     index=0;
                   }
                   if({{$id_chart}}_data.options[index].link_next!=''){
-                    getDataChart('{{$id_chart}}-chart-container-table',{{$id_chart}}_data.options[index].link_next,{{$id_chart}}_data.options[index].where_add,'Program Kegiatan '+{{$id_chart}}_data.options[index].key_name,{{$id_chart}}_data.options[index].map);
+                    getDataChart('{{$id_chart}}-chart-container-table',{{$id_chart}}_data.options[index].link_next,{{$id_chart}}_data.options[index].where_add,'('+ {{$id_chart}}_data.options[index].key_name +')',{{$id_chart}}_data.options[index].map);
                   }
                   
                 }
@@ -51,7 +51,7 @@ var {{$id_chart}}_chart = new Highcharts.Chart({
    yAxis: {
             min: 0,
             title: {
-                text: 'Jumlah Program Kegiatan',
+                text:'{{isset($yaxis)?$yaxis:'Jumlah Program Kegiatan'}}',
                 
             }
         },
@@ -110,7 +110,7 @@ var {{$id_chart}}_chart = new Highcharts.Chart({
               click:function(e){
                   var index=this.index;
                    if({{$id_chart}}_data.options[index].link_next!=''){
-                    getDataChart('{{$id_chart}}-chart-container-table',{{$id_chart}}_data.options[index].link_next,{{$id_chart}}_data.options[index].where_add,'Program Kegiatan '+{{$id_chart}}_data.options[index].key_name,{{$id_chart}}_data.options[index].map);
+                    getDataChart('{{$id_chart}}-chart-container-table',{{$id_chart}}_data.options[index].link_next,{{$id_chart}}_data.options[index].where_add,'('+{{$id_chart}}_data.options[index].key_name+')',{{$id_chart}}_data.options[index].map);
                   }
                   console.log(e);
                 }

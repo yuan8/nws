@@ -16,7 +16,7 @@
             <a class="nav-link bg-default " id="menu_menurut_urusan" data-toggle="pill" href="#menu_menurut_urusan_content" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Berdasarkan Urusan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  e" target="_blank" href="<?php echo e(rt('data_program_kegiatan',['nuwas'=>true])); ?>">Table Program Kegiatan</a>
+            <a class="nav-link  e" target="_blank" href="<?php echo e(rt('data_program_kegiatan')); ?>">Table Program Kegiatan</a>
           </li>
         </ul>
 

@@ -30,7 +30,7 @@
                 <div class="icon">
                   <i class="icon ion-cash"></i>
                 </div>
-                <a href="#" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?php echo e(rt('Keuangan')); ?>" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -61,7 +61,7 @@
                 <div class="icon">
                   <i class="icon ion-home"></i>
                 </div>
-                <a href="#" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?php echo e(rt('kebijakan')); ?>" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -129,9 +129,7 @@ Highcharts.mapChart('map-container', {
       style:{
         color:'#fff'
       }
-
   },
-
   legend: {
       enabled: false
   },
@@ -147,7 +145,7 @@ Highcharts.mapChart('map-container', {
     animation: {
        duration: 500
      },
-    data:  [[11,'#0072c6','1000','111'],[14,'#0072c6','1000','111']],
+    data:  [],
     keys: ['id_daerah', 'color','value','anggaran'],
     name: '',
     borderColor:'#d2d2d2',

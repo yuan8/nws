@@ -246,7 +246,7 @@ function buildDataChart(datas,next='',map=[]){
   for(var i in categories){
     var tb_con=[];
     tb_con.push(categories[i]);
-    tb_con.push('<a class="btn btn-primary btn-sm text-white" onclick="getDetailKegiatan('+JSON.stringify(datalist[i])+')" >Detail Kegiatan</a>');
+    tb_con.push("<a class='btn btn-primary btn-sm text-white' onclick='getDetailKegiatan("+JSON.stringify(datalist[i])+");' >Detail Kegiatan</a>");
     for(var ik in  data ){
       tb_con.push(data[ik]['data'][i].y);
     }
@@ -267,6 +267,22 @@ function buildDataChart(datas,next='',map=[]){
     options:options,
     table:tbody
   };
+
+}
+
+serialize = function(obj) {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+function getDetailKegiatan(id){
+  console.log(id);
+  var url='<?php echo e(rt('data_program_kegiatan')); ?>?wh='+JSON.stringify(id.where_add);
+  window.location=url;
 
 }
 

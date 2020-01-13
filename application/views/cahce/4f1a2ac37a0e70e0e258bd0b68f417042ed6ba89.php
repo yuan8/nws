@@ -2,10 +2,54 @@
 
 
 <div class="row mt-4 mb-4" style="padding-top: 25px;">
+	<div class="col-md-12 mb-4">
+		<h5 class="text-center text-white"><b>Detail Program Kegiatan <?php echo e(isset($_GET['nuwas'])?( $_GET['nuwas']?'NUWAS':''):''); ?></b></h5>
+	</div>
+	<div class="col-md-12 mb-4 text-white">
+		<form action="<?php echo e(rt('data_program_kegiatan')); ?>" id="tgr_form">
+			<input type="hidden" name="nuwas" value="<?php echo e(isset($_GET['nuwas'])?$_GET['nuwas']:null); ?>">
+			<div class="row">
+			<div class="col-md-4">
+				<label>Daerah</label>
+				<select class="form-control tgr" name="kode_daerah">
+					<option value="">-</option>
+					<?php $__currentLoopData = $s_daerah; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					<option <?php echo e(isset($_GET['kode_daerah'])?($_GET['kode_daerah']==$d['id']?'selected':''):''); ?> value="<?php echo e($d['id']); ?>"><?php echo e($d['nama']); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label>Urusan</label>
+				<select class="form-control tgr" name="id_urusan">
+					<option value="">-</option>
+					<?php $__currentLoopData = $s_urusan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					<option <?php echo e(isset($_GET['id_urusan'])?($_GET['id_urusan']==$d['id']?'selected':''):''); ?>  value="<?php echo e($d['id']); ?>"><?php echo e($d['nama']); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label>Sub Urusan</label>
+				<select class="form-control tgr" name="id_sub_urusan">
+					<option value="">-</option>
+					<?php $__currentLoopData = $s_sub_urusan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					<option <?php echo e(isset($_GET['id_sub_urusan'])?($_GET['id_sub_urusan']==$d['id']?'selected':''):''); ?>  value="<?php echo e($d['id']); ?>"><?php echo e($d['nama']); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				</select>
+			</div>
+		</div>
+
+		</form>
+
+		<script type="text/javascript">
+			$('.tgr').on('change',function(){
+				$('#tgr_form').submit();
+			});
+		</script>
+	</div>
 	<div class="col-md-12 ">
 	<div class="card ">
 	<div class="card-body table-responsive">
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>No</th>

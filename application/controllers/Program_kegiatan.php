@@ -270,23 +270,31 @@ class Program_kegiatan extends CI_Controller {
     switch ($link) {
     case 'per_provinsi':
         $data=static::per_provinsi();
-
+        $title ='Program Kegiatan Per-Provinsi dan Kota kabupaten '.$title;
         break;
     case 'per_kota':
         $data=static::per_kota();
+        $title ='Program Kegiatan Per-Daerah '.$title;
+
         break;
 
 
     case 'per_urusan':
         $data=static::per_urusan();
+        $title ='Program Kegiatan Per-Urusan '.$title;
+
 
         break;
     case 'per_sub_urusan':
         $data=static::per_sub_urusan();
+        $title ='Program Kegiatan Tingkat Sub Urusan '.$title;
+
 
         break;
      case 'per_program':
         $data=static::per_program();
+        $title ='Program Kegiatan Tingkat Program '.$title ;
+
 
         break;
       

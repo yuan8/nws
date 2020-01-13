@@ -81,7 +81,9 @@ class Keuangan extends CI_Controller {
         ) as where_add,
      	
      sum(a.anggaran) as data_Total_Anggaran_kegiatan,
-     CASE WHEN (sum(t.total_anggaran) is NULL) THEN 100 ELSE SUM(a.anggaran)*100 /sum(t.total_anggaran)  END  as data_Persentase_anggaran_terhadap_total_daerah
+     sum(t.total_anggaran) as data_anggaran_daerah,
+
+     CASE WHEN (sum(t.total_anggaran) is NULL) THEN 100 ELSE SUM(a.anggaran)*100 /sum(t.total_anggaran)  END  as data_Persentase_anggaran_kegiatan
       from provinsi as p
        join program_kegiatan_sipd2 as a on a.kode_daerah ILIKE p.id_provinsi || '%' 
         join total_anggaran as t on t.tahun = a.tahun and  t.kodepemda ILIKE p.id_provinsi || '%' 
@@ -124,7 +126,8 @@ class Keuangan extends CI_Controller {
         ) as where_add,
      	
      sum(a.anggaran) as data_Total_Anggaran_kegiatan,
-     CASE WHEN (sum(t.total_anggaran) is NULL) THEN 100 ELSE SUM(a.anggaran)*100 /sum(t.total_anggaran)  END  as data_Persentase_anggaran_terhadap_total_daerah
+     sum(t.total_anggaran) as data_anggaran_daerah,
+     CASE WHEN (sum(t.total_anggaran) is NULL) THEN 100 ELSE SUM(a.anggaran)*100 /sum(t.total_anggaran)  END  as data_Persentase_anggaran_kegiatan
       from view_daerah as p
        join program_kegiatan_sipd2 as a on a.kode_daerah =p.id 
         join total_anggaran as t on t.tahun = a.tahun and  t.kodepemda = p.id 
@@ -251,7 +254,7 @@ class Keuangan extends CI_Controller {
         ',',
         '`string`]]'
         ) as where_add,
-     sum(a.anggaran) as data_Total_Anggaran_kegiatan
+      sum(a.anggaran) as data_Total_Anggaran_kegiatan
       
       from program_kegiatan_sipd2 as a
       
@@ -296,23 +299,31 @@ class Keuangan extends CI_Controller {
     switch ($link) {
     case 'per_provinsi':
         $data=static::per_provinsi();
-
+        $title ='Anggaran Per-Provinsi dan Kota kabupaten '.$title;
         break;
     case 'per_kota':
         $data=static::per_kota();
+        $title ='Anggaran Per-Daerah '.$title;
+
         break;
 
 
     case 'per_urusan':
         $data=static::per_urusan();
+        $title ='Anggaran Per-Urusan '.$title;
+
 
         break;
     case 'per_sub_urusan':
         $data=static::per_sub_urusan();
+        $title ='Anggaran Tingkat Sub Urusan '.$title;
+
 
         break;
      case 'per_program':
         $data=static::per_program();
+        $title ='Anggaran Tingkat Program '.$title ;
+
 
         break;
       
@@ -326,7 +337,7 @@ class Keuangan extends CI_Controller {
     
     $title=''!=$title?$title:$data['title'];
 
-    $data_view=array('id_chart'=>('id_chart_'.date('h_i_s').((int)rand(0,100))),'dom'=>($dom.'_'.date('h_i_s')),'data'=>['data'=>$data_d,'where_def'=>$data['where_def']],'title'=>$title,'subtitle'=>$data['subtitle'],'next_link'=>$next_link,'map'=>$map); 
+    $data_view=array('id_chart'=>('id_chart_'.date('h_i_s').((int)rand(0,100))),'dom'=>($dom.'_'.date('h_i_s')),'data'=>['data'=>$data_d,'where_def'=>$data['where_def']],'title'=>$title,'subtitle'=>$data['subtitle'],'next_link'=>$next_link,'map'=>$map,'yaxis'=>'Anggaran'); 
     return  view('component.themchart',($data_view));
 
   }
