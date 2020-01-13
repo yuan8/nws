@@ -175,25 +175,49 @@
 
 <script type="text/javascript">
 
-function buildDataChart(datalist){
+function buildDataChart(datas,next='',map=[]){
+  var datalist=datas['data'];
+  datas['where_def']=datas['where_def'].reverse();
+
   var categories=[];
+  var options=[];
+
   var data_con=[];
   var data=[];
 
   for(var i in datalist){
-    if(!categories.includes(datalist[i].key_name)){
-      categories.push(datalist[i].key_name);
-    }
+    
 
     for(var k in datalist[i]){
       if(k.includes('data_')){
         if(data[k] == undefined){
           data[k]=[];
-          data[k]['name']=k.replace('data_','').replace(/_/g,' ');
+          data[k]['name']=(k.replace('data_','').replace(/_/g,' ')).replace(/^\w/g, function (chr) {
+            return chr.toUpperCase();
+          });
           data[k]['data']=[];
         }
-          data[k]['data'].push(parseFloat(datalist[i][k]));
+        if((datalist[i].where_add!=undefined) && ((typeof datalist[i].where_add)!='object') ){
+
+          datalist[i].where_add=JSON.parse( (datalist[i].where_add).replace(/`/g,'"') );
+          for(var w in datas['where_def']){
+            datalist[i].where_add.unshift(datas['where_def'][w]);
+          }
+
+        }
+          datalist[i]['link_next']=next;
+          datalist[i]['map']=map;
+
+          data[k]['data'].push({y:parseFloat(datalist[i][k]),'data_source':datalist[i],'link_next':next,map:map});
+
       }
+    }
+
+
+    if(true){
+        categories.push(datalist[i].key_name);
+        options.push(datalist[i]);
+
     }
 
 
@@ -206,9 +230,42 @@ function buildDataChart(datalist){
   }
 
 
+
+  var tb=2;
+  var thead=['','Action'];
+  var tbody=[];
+
+  var dtb=0;
+
+
+
+  for(var tbk in data){
+    thead.push(data[tbk].name);
+  }
+
+  for(var i in categories){
+    var tb_con=[];
+    tb_con.push(categories[i]);
+    tb_con.push('<a class="btn btn-primary btn-sm text-white" onclick="getDetailKegiatan('+JSON.stringify(datalist[i])+')" >Detail Kegiatan</a>');
+    for(var ik in  data ){
+      tb_con.push(data[ik]['data'][i].y);
+    }
+
+    tbody.push(tb_con);
+
+  }
+
+    tbody.unshift(thead);
+
+  
+
+
+
   return {
     categories:categories,
-    data:data
+    data:data,
+    options:options,
+    table:tbody
   };
 
 }

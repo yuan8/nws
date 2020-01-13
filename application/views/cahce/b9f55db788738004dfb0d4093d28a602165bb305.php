@@ -17,27 +17,27 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="<?php echo e(rt('air_minum')); ?>">Air Minum</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Air Minum Daerah NUWAS</a>
+                  <a class="dropdown-item" href="<?php echo e(rt('program_kegiatan_nuwas')); ?>">NUWAS</a>
                 </div>
           </li>
           <li class="  nav-item d-none d-sm-inline-block dropdown">
             <a href="javascript:void(0)"  data-toggle="dropdown" class="nav-link text-white  dropdown-toggle"><i class="ion ion-cash"></i> Anggaran</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Air Minum</a>
+              <a class="dropdown-item" href="<?php echo e(rt('Keuangan')); ?>">Anggaran Air Minum</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Air Minum Daerah NUWAS</a>
+              <a class="dropdown-item" href="<?php echo e(rt('Keuangan/nuwas')); ?>">Aanggaran NUWAS</a>
             </div>
           </li>
           <li class="dropdown nav-item d-none d-sm-inline-block">
             <a  href="javascript:void(0)"  data-toggle="dropdown" class="nav-link text-white  dropdown-toggle"><i class=" fa fa-industry"></i> Profile PDAM</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Air Minum</a>
+              <a class="dropdown-item" href="<?php echo e(rt('Keuangan')); ?>">Seluruhnya</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Air Minum Daerah NUWAS</a>
+              <a class="dropdown-item" href="<?php echo e(rt('Keuangan_nuwas')); ?>">Daerah NUWAS</a>
             </div>
           </li>
           <li class=" nav-item d-none d-sm-inline-block">
-            <a href="javascript:void(0)" class="nav-link text-white "><i class=" fa fa-list"></i> Profile Kebijakan </a>
+            <a href="<?php echo e(rt('Kebijakan')); ?>" class="nav-link text-white "><i class=" fa fa-list"></i> Profile Kebijakan </a>
 
 
 

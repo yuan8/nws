@@ -90,5 +90,10 @@ class get_detail_kegiatan extends CI_Controller {
     return query($this,$query);
   }
 
+  public function detail(){
+    
+    
+  }
+
 
 }

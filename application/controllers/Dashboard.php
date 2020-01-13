@@ -22,7 +22,7 @@ class Dashboard extends CI_Controller {
 	{
 		$tahun=2020;
 
-		$query='select count(*) jumlah_kegiatan, sum(anggaran) as jumlah_anggaran from program_kegiatan_sipd2 where tahun='.$tahun;
+		$query='select count(*) jumlah_kegiatan, sum(anggaran) as jumlah_anggaran from program_kegiatan_sipd2 where tag_air_minum = true and  tahun='.$tahun;
 		$data=query($this,$query);
 		if(count($data)>0){
 			$data=$data[0];
@@ -30,9 +30,16 @@ class Dashboard extends CI_Controller {
 
 		$data_return=[];
 
-		$query='select count(*) jumlah_kegiatan, sum(anggaran) as jumlah_anggaran from program_kegiatan_sipd2 where tahun='.$tahun;
+		$query='select count(*) jumlah_pdam from data_sat_nuwas where tahun='.$tahun;
 
-	   return view('pages.index',['title'=>'Dashboard','data'=>$data,'tahun'=>$tahun]);
+		$data2=query($this,$query);
+		if(count($data2)>0){
+			$data2=$data2[0];
+		}
+
+
+
+	   return view('pages.index',['title'=>'Dashboard','data'=>$data,'data2'=>$data2,'tahun'=>$tahun]);
 	}
 
 	public function t(){

@@ -4,8 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Air_minum extends CI_Controller {
 
   public function index(){
+    
     return view('pages.air_minum');
   }
+
+
 
   public static function build($data){
 

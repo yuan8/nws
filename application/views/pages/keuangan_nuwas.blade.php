@@ -5,7 +5,7 @@
 <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <div class="col-md-12 " style="padding-top:40px; ">
-  <h5 class="text-center text-white "><b>PROGRAM, KEGIATAN BERKAITAN DENGAN AIR MINUM</b></h5>
+  <h5 class="text-center text-white "><b>DATA ANGGARAN KEGIATAN TARGET NUWAS</b></h5>
 </div>
 <div class="row no-gutters bg-def">
   <div class="col-12 col-sm-12 col-lg-12">
@@ -49,11 +49,11 @@
 @section('script')
 <script type="text/javascript">
 
-  $.post('{{rt("Program_kegiatan/program_kegiatan_get_data_chart/per_provinsi")}}',{id_dom:'chart-container-per-daerah','where':[],map:['per_provinsi','per_kota','per_urusan','per_sub_urusan','per_program']},function(res){
+  $.post('{{rt("keuangan/program_kegiatan_get_data_chart/per_provinsi")}}',{id_dom:'chart-container-per-daerah','where':[['a.kode_daerah','in',"('1207','1373','1472','1403','1709','3202','3311','3572','3524','3502','6301','7172')",'array']],map:['per_provinsi','per_kota','per_urusan','per_sub_urusan','per_program']},function(res){
     $('#chart-container-per-daerah').html(res);
   });
 
-   $.post('{{rt("program_kegiatan/program_kegiatan_get_data_chart/per_urusan")}}',{id_dom:'chart-container-per-urusan','where':[],map:['per_urusan','per_sub_urusan','per_program']},function(res){
+   $.post('{{rt("keuangan/program_kegiatan_get_data_chart/per_urusan")}}',{id_dom:'chart-container-per-urusan','where':[['a.kode_daerah','in',"('1207','1373','1472','1403','1709','3202','3311','3572','3524','3502','6301','7172')",'array']],map:['per_urusan','per_sub_urusan','per_program']},function(res){
     $('#chart-container-per-urusan').html(res);
   });
 
@@ -63,7 +63,7 @@
 <script type="text/javascript">
   
   function getDataChart(dom,link_next,where,title,map=[]){
-    $.post('{{rt("program_kegiatan/program_kegiatan_get_data_chart/")}}'+link_next,{where:where
+    $.post('{{rt("keuangan/program_kegiatan_get_data_chart/")}}'+link_next,{where:where
       ,id_dom:dom,title:title,map:map},function(res){
         $('#'+dom).html(res);
          $('html, body').animate(

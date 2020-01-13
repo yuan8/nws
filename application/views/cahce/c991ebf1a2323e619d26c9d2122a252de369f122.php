@@ -16,7 +16,7 @@
                 <div class="icon">
                     <i class="icon ion-android-locate"></i>
                 </div>
-                <a href="#" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?php echo e(rt('air_minum')); ?>" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -40,7 +40,7 @@
                 <div class="inner">
                   <h5>Profile PDAM</h5>
 
-                  <p>999</p>
+                  <p><?php echo e(number_format($data2['jumlah_pdam'],0,',','.')); ?></p>
                 </div>
                 <div class="icon">
                   <i class="icon ion-waterdrop"></i>
@@ -56,7 +56,7 @@
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h5>Profile Kebijakan</h5>
-                  <p>0</p>
+                  <p style="min-height: 25px;"></p>
                 </div>
                 <div class="icon">
                   <i class="icon ion-home"></i>
