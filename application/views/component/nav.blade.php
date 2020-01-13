@@ -31,7 +31,7 @@
           <li class="dropdown nav-item d-none d-sm-inline-block">
             <a  href="javascript:void(0)"  data-toggle="dropdown" class="nav-link text-white  dropdown-toggle"><i class=" fa fa-industry"></i> Profile PDAM</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{rt('Keuangan')}}">Seluruhnya</a>
+              <a class="dropdown-item" href="{{rt('pdam')}}">Seluruhnya</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{rt('Keuangan_nuwas')}}">Daerah NUWAS</a>
             </div>

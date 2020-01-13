@@ -30,11 +30,11 @@
         <div class="col-md-12 mb-4">
           <div class="tab-content" id="custom-tabs-two-tabContent">
             <div class="tab-pane fade active show" id="menu_menurut_daerah_content" role="tabpanel" aria-labelledby="menu_menurut_daerah">
-              <div class="col-md-12 text-white" id="chart-container-per-daerah">
+              <div class="col-md-12 text-white" id="chart-container-per-urusan_nspk">
               </div>
             </div>
             <div class="tab-pane fade" id="menu_menurut_urusan_content" role="tabpanel" aria-labelledby="menu_menurut_urusan">
-               <div class="col-md-12" id="chart-container-per-urusan">
+               <div class="col-md-12" id="chart-container-per-urusan_spm">
               </div>
             </div>
              <div class="tab-pane fade" id="menu_menurut_pn_content" role="tabpanel" aria-labelledby="menu_menurut_urusan">
@@ -59,11 +59,23 @@
 <script type="text/javascript">
 
   $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_nspk")); ?>',{id_dom:'chart-container-per-daerah','where':[],map:['per_nspk','per_kota','per_urusan','per_sub_urusan','per_program']},function(res){
-    $('#chart-container-per-daerah').html(res);
+    $('#chart-container-per-urusan_nspk').html(res);
   });
 
    $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_pn")); ?>',{id_dom:'chart-container-per-urusan','where':[],map:['per_pn','per_urusan','per_sub_urusan','per_program']},function(res){
     $('#chart-container-per-urusan_pn').html(res);
+  });
+
+    $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_spm")); ?>',{id_dom:'chart-container-per-urusan','where':[],map:['per_spm','per_urusan','per_sub_urusan','per_program']},function(res){
+    $('#chart-container-per-urusan_spm').html(res);
+
+
+  });
+
+  $.post('<?php echo e(rt("Kebijakan/program_kegiatan_get_data_chart/per_sdgs")); ?>',{id_dom:'chart-container-per-urusan','where':[],map:['per_sdgs','per_urusan','per_sub_urusan','per_program']},function(res){
+    $('#chart-container-per-urusan_sdgs').html(res);
+
+    
   });
 
 </script>

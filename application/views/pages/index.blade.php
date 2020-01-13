@@ -48,7 +48,7 @@
                 <div class="icon">
                   <i class="icon ion-waterdrop"></i>
                 </div>
-                <a href="#" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{rt('pdam')}}" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

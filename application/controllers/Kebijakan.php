@@ -343,6 +343,102 @@ class kebijakan extends CI_Controller {
   }
 
 
+   public function per_spm(){
+
+     $where_def=[
+    	['a.kode_kegiatan',' is not  ','null',''],
+    	['a.tag_air_minum',' =  ',true,'boolean']
+    ];
+
+    
+    $where=''!=(request('where'))?request('where'):[];
+
+
+    $query="
+      select DISTINCT(a.id_spm) as key, Concat('',spm.spm) as key_name,
+       CONCAT('[[',
+        '`a.id_spm`',
+        ',',
+        '` =`',
+        ',','`',
+        a.id_spm,
+        '`',
+        ',',
+        '`numberic`]]'
+        ) as where_add,
+
+      count(a.kode_kegiatan) as data_jumlah_kegiatan,
+      count(DISTINCT(a.kode_program)) as data_jumlah_program
+
+      from program_kegiatan_sipd2 as a
+      join master_spm as spm on a.id_spm = spm.id
+      
+      {{where}} 
+
+      group by (a.id_spm,spm.spm) order by count(a.kode_kegiatan) desc
+
+    ";
+
+
+   
+    $builder=static::buildquery($where_def,$where,$query);
+    $query=$builder['query'];
+    
+    $where_def=$builder['where'];
+
+    return (array('query'=>$query,'where_def'=>$where_def,'title'=>'Program Kegiatan Per-Provinsi dan Kota kabupaten','subtitle'=>'Bangda Kemendagri','next_link'=>'per_kota'));
+
+  }
+
+   public function per_sdgs(){
+
+     $where_def=[
+    	['a.kode_kegiatan',' is not  ','null',''],
+    	['a.tag_air_minum',' =  ',true,'boolean']
+    ];
+
+    
+    $where=''!=(request('where'))?request('where'):[];
+
+
+    $query="
+      select DISTINCT(a.id_sdgs) as key, Concat('',sdgs.sdgs) as key_name,
+       CONCAT('[[',
+        '`a.id_sdgs`',
+        ',',
+        '` =`',
+        ',','`',
+        a.id_sdgs,
+        '`',
+        ',',
+        '`numberic`]]'
+        ) as where_add,
+
+      count(a.kode_kegiatan) as data_jumlah_kegiatan,
+      count(DISTINCT(a.kode_program)) as data_jumlah_program
+
+      from program_kegiatan_sipd2 as a
+      join master_sdgs as sdgs on a.id_sdgs = sdgs.id
+      
+      {{where}} 
+
+      group by (a.id_sdgs,sdgs.sdgs) order by count(a.kode_kegiatan) desc
+
+    ";
+
+
+   
+    $builder=static::buildquery($where_def,$where,$query);
+    $query=$builder['query'];
+    
+    $where_def=$builder['where'];
+
+    return (array('query'=>$query,'where_def'=>$where_def,'title'=>'Program Kegiatan Per-Provinsi dan Kota kabupaten','subtitle'=>'Bangda Kemendagri','next_link'=>'per_kota'));
+
+  }
+
+
+
 
 
   public function program_kegiatan_get_data_chart($link=''){
@@ -407,6 +503,18 @@ class kebijakan extends CI_Controller {
         $title ='Program Kegiatan  PN  '.$title ;
 
 
+        break;
+      
+     case 'per_spm':
+        $data=static::per_spm();
+        $title ='Program Kegiatan  SPM  '.$title ;
+
+
+        break;
+     
+      case 'per_sdgs':
+        $data=static::per_spm();
+        $title ='Program Kegiatan  SDGS  '.$title ;
         break;
       
       default:
